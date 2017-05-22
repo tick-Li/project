@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bootstrap日期控件</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<style>
+		.datetimepicker{top:30px;}
+		.form-horizontal .date-months,.form-horizontal .date-weeks,.form-horizontal .date-days{display: none;}
+		.cc{height:100px;border:1px solid red;}
+		table{width:300px;border-collapse:collapse;border:none;}
+		th,td{border:1px solid blue;text-align: center;height:30px;}
+	</style>
+</head>
+<body>
+	
+	<div class="control-group form-horizontal" >
+		<input type="radio" name="myradio" id="" checked="checked">年 
+		<input type="radio" name="myradio" id="">月
+		<input type="radio" name="myradio" id="">周
+		<input type="radio" name="myradio" id="">日
+		<div class="input-append date date-years" data-date="" data-date-format="yyyy">
+			<input type="hidden" value="" >
+			<span class="add-on radio-years"><i class="icon-th"></i></span>
+		</div>
+		<div class="input-append date date-months" data-date="" data-date-format="yyyy-mm">
+			<input type="hidden" value="" >
+			<span class="add-on radio-months"><i class="icon-th"></i></span>
+		</div>
+		<div class="input-append date date-weeks" data-date="" data-date-format="yyyy-mm-dd">
+			<input type="hidden" value="" >
+			<span class="add-on radio-weeks"><i class="icon-th"></i></span>
+		</div>
+		<div class="input-append date date-days" data-date="" data-date-format="hh:ii">
+			<input type="hidden" value="" >
+			<span class="add-on radio-days"><i class="icon-th"></i></span>
+		</div>
+	</div>	
+	<table class="mytable">
+		<tr class='header'>
+			<th>ID</th>
+			<th>文字</th>
+			<th>日期</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>呵呵哒</td>
+			<td>2017-05-08</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>很好</td>
+			<td>2017-05-05</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>呵恩</td>
+			<td>2015-04-19</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>很好</td>
+			<td>2016-05-08</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>呵恩</td>
+			<td>2016-04-19 23:00</td>
+		</tr>
+	</table>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/locales/bootstrap-datetimepicker.fr.js"></script>
+	<script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script>
+		//初始化日期
+		$('.date-years').datetimepicker({
+				language: 'zh-CN',
+				format: 'yyyy',
+			 	weekStart: 1,
+			 	autoclose: 1,
+			 	minView: 4,
+			 	startView: 4,
+			 	// forceParse: 1
+		});
+		$('.date-months').datetimepicker({
+				language: 'zh-CN',
+				format: 'yyyy-mm',
+			 	weekStart: 1,
+			 	autoclose: 1,
+			 	minView: 3,
+			 	startView: 3,
+			 	// forceParse: 1
+		});
+		$('.date-weeks').datetimepicker({
+			language:  'zh-CN',
+			format: 'yyyy-mm-dd',
+	        weekStart: 1,
+			autoclose: 1,
+			startView: 2,
+			minView: 2,
+			maxView: 1,
+			// forceParse: 1
+		});
+		$('.date-days').datetimepicker({
+			language:  'zh-CN',
+			format: 'hh:00',
+	        weekStart: 1,
+			autoclose: 1,
+			startView: 1,
+			minView: 1,
+			maxView: 1,
+			// forceParse: 1
+		});
+
+		//设置 datetimepicker 滚动显示
+		var list = $('.datetimepicker');
+
+		$('.radio-years').click(function(){
+			$(list).hide();
+			$(list[0]).slideDown();
+		});
+		$('.radio-months').click(function(){
+			$(list).hide();
+			$(list[1]).slideDown();
+		});
+		$('.radio-weeks').click(function(){
+			$(list).hide();
+			$(list[2]).slideDown();
+		});
+		$('.radio-days').click(function(){
+			$(list).hide();
+			$(list[3]).slideDown();
+		});
+
+		//选择日期格式
+		var radiolist = $('input[type="radio"]');
+		for(var i=0;i<radiolist.length;i++){
+			radiolist[i].onclick = function (){
+				var _index = $(this).index();
+				if(_index == 0){
+					$('.date-years').css('display','inline-block');
+					$('.date-months').hide();
+					$('.date-weeks').hide();
+					$('.date-days').hide();
+				}else
+				if(_index == 1){
+					$('.date-years').hide();
+					$('.date-months').css('display','inline-block');
+					$('.date-weeks').hide();
+					$('.date-days').hide();
+				}else
+				if(_index == 2){
+					$('.date-years').hide();
+					$('.date-months').hide();
+					$('.date-weeks').css('display','inline-block');
+					$('.date-days').hide();
+				}else
+				if(_index == 3){
+					$('.date-years').hide();
+					$('.date-months').hide();
+					$('.date-weeks').hide();
+					$('.date-days').css('display','inline-block');
+				}
+			};
+		}
+
+		//本地搜索
+		$('input[type="hidden"]').change(function(){
+			var hidden_value = $(this).val();
+
+			searchTable(hidden_value);
+		});
+		function searchTable(hidden_value){
+			var text = hidden_value;
+			var _tr = $('.mytable tr');
+			if(text != ""){
+			_tr.not('.mytable .header').hide().filter(':contains('+text+')').show();
+			}
+		}
+
+	</script>
+</body>
+</html>

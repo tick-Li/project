@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="newnavchangetabs.js"></script>
+	<style>
+		ul{list-style: none;height:60px;}
+		ul li{float:left;}
+		li a{display:inline-block;width:147px;border:1px solid red;}
+		li a:hover{background:blue;color:#fff;}
+		li.tabs-selected{background:blue;color:#fff;}
+		li.tabs-selected a{background:blue;color:#fff;}
+		li a span{display: inline-block;}
+		li a .tabs-title{text-align:center;margin-left: 45px;}
+		li a .tabs-icon{padding:8px;margin-top:2px;margin-left:-100px;border:1px solid red;}
+		.icon-home{background:#fff;}
+		.icon-homew{background:#000;}
+		.icon-shjg{background:green;}
+		.icon-shjgw{background:red;}
+		.icon-qxxx{background:#000;}
+		.icon-qxxxw{background:#fff;}
+		.icon-mrysq{background:red;}
+		.icon-mrysqw{background:green;}
+		.icon-csfx{background:#272822;}
+		.icon-csfxw{background:#A0B4DC;}
+		.icon-czyj{background:#F9CC9D;}
+		.icon-czyjw{background:#8F2EBF;}
+		.icon-zbrz{background:#4593EC;}
+		.icon-zbrzw{background:#FFCE42;}
+		.icon-zlzx{background:#FDDC9A;}
+		.icon-zlzxw{background:#fff;}
+	</style>
+</head>
+<body>
+	<ul class="tabs">
+		<li class="tabs-selected"><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">主页导航</span><span class="tabs-icon icon-home"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">山洪监管</span><span class="tabs-icon icon icon-shjg"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">气象信息</span><span class="tabs-icon icon icon-qxxx"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">每日雨水情</span><span class="tabs-icon icon icon-mrysq"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">城市防汛</span><span class="tabs-icon icon icon-csfx"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">参照意见</span><span class="tabs-icon icon icon-czyj"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">值班日志</span><span class="tabs-icon icon icon-zbrz"></span>
+		</a></li>
+		<li><a class="tabs-inner" >
+		<span class="tabs-title tabs-closable tabs-with-icon">资料中心</span><span class="tabs-icon icon icon-zlzx"></span>
+		</a></li>
+	</ul>
+	<script>
+			// var ul = $('.tabs');
+			// var li = $('.tabs li');
+			// for(var i=0;i<li.length;i++){
+			// 	(function(){
+			// 		var n= i;
+			// 		li[i].onclick = function(){
+			// 			li.removeClass();
+			// 			$(this).addClass('tabs-selected');
+			// 			navDefault();
+			// 		}
+			// 	})(i);
+			// }
+	</script>
+	<div style="width:200px; white-space:nowrap;overflow:hidden;text-overflow:ellipsis; border:1px solid red">试试看试试看试试看试试看试试看试试看试试看试试看试试看试试看试试看</div> 
+</body>
+</html>
