@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<ul class="one">
+		<li>呵呵哒<input type="checkbox" name="" value="1" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="2" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="3" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="4" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="5" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="6" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="7" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="8" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="9" id=""></li>
+		<li>呵呵哒<input type="checkbox" name="" value="10" id=""></li>
+	</ul>
+	<ul class="two">
+		<li>呵呵哒1<input type="checkbox" name="cc" value="1" id=""><input type="hidden" value="1" name="myhidden"></li>
+		<li>呵呵哒1<input type="checkbox" name="cc" value="2" id=""><input type="hidden" value="1" name="myhidden"></li>
+		<li>呵呵哒4<input type="checkbox" name="cc" value="3" id=""><input type="hidden" value="4" name="myhidden"></li>
+		<li>呵呵哒3<input type="checkbox" name="cc" value="4" id=""><input type="hidden" value="3" name="myhidden"></li>
+		<li>呵呵哒3<input type="checkbox" name="cc" value="5" id=""><input type="hidden" value="3" name="myhidden"></li>
+		<li>呵呵哒1<input type="checkbox" name="cc" value="6" id=""><input type="hidden" value="1" name="myhidden"></li>
+		<li>呵呵哒3<input type="checkbox" name="cc" value="7" id=""><input type="hidden" value="3" name="myhidden"></li>
+		<li>呵呵哒1<input type="checkbox" name="cc" value="8" id=""><input type="hidden" value="1" name="myhidden"></li>
+		<li>呵呵哒4<input type="checkbox" name="cc" value="9" id=""><input type="hidden" value="4" name="myhidden"></li>
+		<li>呵呵哒1<input type="checkbox" name="cc" value="10" id=""><input type="hidden" value="1" name="myhidden"></li>
+	</ul>
+	<script>
+	var list = [];
+	$('ul.one li input').click(function(){
+		
+		var _val = $(this).val();
+
+		if(list.length == 0){
+			console.log('加载0');
+			list.push(_val);
+		}else{
+			if(list.indexOf(_val) < 0){
+				console.log('加载val');
+				list.push(_val);
+			}
+			else{
+				console.log('不加载');
+				var _hidden = $('input[name="myhidden"]');
+				for(var i=0;i<_hidden.length;i++){
+					if(_val == $(_hidden[i]).val()){
+						$(_hidden[i]).parent().hide();
+						$(_hidden[i]).siblings('input[name="cc"]').attr('checked',false);
+					}
+				}
+				console.log('ppp======='+$('ul.two li input:checked').length);
+
+				list.splice($.inArray(_val,list),1);
+			}
+		}
+		var _checked = $('ul.two li input:checked');
+		for(var i=0;i<_checked.length;i++){
+				console.log($(_checked[i]).val()+' , ');
+			}
+	});
+	</script>
+</body>
+</html>
