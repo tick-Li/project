@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.8.3.min.js"></script>
+	<style>
+		*{padding:0;margin:0;font-size: 14px;}
+		section{padding:30px 100px;box-sizing: border-box;border:1px solid blue;}
+		ul{list-style:none;overflow: hidden;}
+		ul > li{float:left;text-align: center;padding:0 10px;border:1px solid red;}
+		.hydrology,.precipitation{display: none;}
+		.reservoir .table-header,
+		.hydrology .table-header,
+		.precipitation .table-header{position: relative;overflow: hidden;text-align: center;line-height:30px;font-size: 16px;border: 1px solid red;}
+		.reservoir .input-radio,
+		.hydrology .input-radio,
+		.precipitation .input-radio{position: absolute;left: 0;}
+		.reservoir .table-header .input-radio label,
+		.hydrology .table-header .input-radio label,
+		.precipitation .table-header .input-radio label{display: block;float: left;padding:3px 10px;border:1px solid red;}
+		.reservoir .table-header .input-radio label input,
+		.hydrology .table-header .input-radio label input,
+		.precipitation .table-header .input-radio label input{width:16px;height:16px;}
+		.reservoir .table-header .input-radio label span,
+		.hydrology .table-header .input-radio label span,
+		.precipitation .table-header .input-radio label span{display: inline-block;float: right;margin-top: -3px;margin-left: 5px;}
+		table{border-collapse:collapse;border: none;width:100%;}
+		td{border:1px solid red;height: 200px;text-align: center;}
+		.table-hide{display: none;}
+	</style>
+</head>
+<body>
+	<section>
+		<ul>
+			<li>水库<img src="" alt=""></li>
+			<li>水文<img src="" alt=""></li>
+			<li>县区降雨量<img src="" alt=""></li>
+		</ul>
+		<div class="reservoir">
+			<div class="table-header">
+				<div class="input-radio">
+					<label for=""><input type="radio" checked="checked" name="reservoir" id=""><span>水位库容</span></label>
+					<label for=""><input type="radio" name="reservoir" id=""><span>出入流供水</span></label>
+					<label for=""><input type="radio" name="reservoir" id=""><span>降雨量</span></label>
+				</div>
+				水位库容历史对比表
+			</div>
+			<table>
+				<tr>
+					<td>woshidi 1 ge table</td>
+				</tr>
+			</table>
+			<table class="table-hide">
+				<tr>
+					<td>woshidi 2 ge table</td>
+				</tr>
+			</table>
+			<table  class="table-hide">
+				<tr>
+					<td>woshidi 3 ge table</td>
+				</tr>
+			</table>
+		</div>
+		<div class="hydrology">
+			<div class="table-header">
+				<div class="input-radio">
+					<label for=""><input type="radio" checked="checked" name="hydrology" id=""><span>水位库容</span></label>
+					<label for=""><input type="radio" name="hydrology" id=""><span>出入流供水</span></label>
+					<label for=""><input type="radio" name="hydrology" id=""><span>降雨量</span></label>
+				</div>
+				水位库容历史
+			</div>
+			<table>
+				<tr>
+					<td>woshidi 1 ge table</td>
+				</tr>
+			</table>
+			<table class="table-hide">
+				<tr>
+					<td>woshidi 2 ge table</td>
+				</tr>
+			</table>
+			<table  class="table-hide">
+				<tr>
+					<td>woshidi 3 ge table</td>
+				</tr>
+			</table>
+		</div>
+		<div class="precipitation">
+			<div class="table-header">
+				<div class="input-radio">
+					<label for=""><input type="radio" checked="checked" name="precipitation" id=""><span>水位库容</span></label>
+					<label for=""><input type="radio" name="precipitation" id=""><span>出入流供水</span></label>
+					<label for=""><input type="radio" name="precipitation" id=""><span>降雨量</span></label>
+				</div>
+				水位
+			</div>
+			<table>
+				<tr>
+					<td>woshidi 1 ge table</td>
+				</tr>
+			</table>
+			<table class="table-hide">
+				<tr>
+					<td>woshidi 2 ge table</td>
+				</tr>
+			</table>
+			<table  class="table-hide">
+				<tr>
+					<td>woshidi 3 ge table</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<script>
+		$('ul>li').click(function(){
+			$(this).css({'background':'#abcdef','color':'#fff'}).siblings().css({'background':'#fff','color':'#000'}).end().parent().siblings(':not("ul")').eq($(this).index()).show().siblings(':not("ul")').hide();
+		});
+		$('.input-radio label').mouseover(function(){
+			$(this).find('input[type="radio"]').attr('checked',true).end().siblings().find('input[type="radio"]').attr('checked',false).end().parents('.table-header').siblings('table').eq($(this).index()).show().siblings('table').hide();
+		});
+	</script>
+</body>
+</html>
